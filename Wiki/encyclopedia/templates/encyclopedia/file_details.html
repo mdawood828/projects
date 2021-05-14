@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+     Details
+{% endblock %}
+
+{% block body %}
+    <h1>Details of {{file}}</h1>
+
+    <p>
+                {{ entries	|	safe }}
+        
+    </p>
+
+
+<a href="{% url 'md_update' file %}">
+	<button name="{{file}}" value="{{file}}" >Update</button>
+</a>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Staus
+{% endblock %}
+
+{% block body %}
+    <h1>Status</h1>
+
+    <div class="alert alert-success alert-dismissible fade in">
+    	<a href="{% url 'index' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ entry }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+<script>
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+    const form = document.querySelector("#compose-form");
+    const msg = document.querySelector("#message");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      to = document.querySelector("#compose-recipients");
+
+fetch("/test_pass", { 
+      
+    // Adding method type 
+    method: "POST", 
+      
+    // Adding body or contents to send 
+    body: JSON.stringify({ 
+        recipients: to.value,  
+    }), 
+      
+    // Adding headers to the request 
+    headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    } 
+}) 
+        .then((response) => response.json())         
+        .then((result) => {
+          console.log(result);
+          if (result.message == "Email sent successfully.") {
+            msg.innerHTML = `<div>"OK! Your request has been done"</div>`;
+          } else {
+            msg.innerHTML = `<div>
+            ${result.error}
+          </div>`;
+          }
+        });
+    });
+  },
+  false
+);
+</script>
+	<title>Untitled 1</title>
+</head>
+<body>
+<div id="message">Message</div>
+<form id="compose-form">
+<input type="text"  id="compose-recipients"/>
+<input type="submit" name="check"/>
+</form>
+</body>
+</html>

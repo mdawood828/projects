@@ -1,0 +1,24 @@
+textarea {
+    min-height: 180px;
+}
+.email_h:hover
+{
+    background-color: #005984;
+    color: white;
+}
+.items {
+  cursor: pointer;
+  /*height: 65px;*/
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.read {
+	font-weight: normal;	
+  background-color: #e6e6e6;
+}
+th
+{
+background-color: #005984;
+color: white;
+}
