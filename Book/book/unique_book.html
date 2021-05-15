@@ -1,0 +1,73 @@
+{% extends "book/layout.html" %}
+
+{% block form %}
+
+<h2 style="text-align: center;">
+<strong>
+You Selected ISBN: {{ get_isbn }}
+</strong>
+</h2>
+
+<div class="container">
+  <div class="row" style="padding:7px">
+   <h2 style="padding:5px"><span class="badge badge-lite">Please rate for this book</span></h2>
+ <form class="form-inline" action="{{url_for('put_ratings')}}" method="post">
+    <label for="" class="mb-2 mr-sm-2" style="margin-left:10px">Book Rating:</label>
+  <textarea class="form-control" rows="1" cols="30" id="rw1" required="" placeholder="Put Reviews 45 Charcters" name="reviews" maxlength="49"> </textarea>  
+    	
+    	<div class="col-md-4">
+    	<select name="rating" data-style="btn-primary" style="padding-left: 5px">
+    	<option value="1">1</option>	
+    	<option value="2">2</option>
+    	<option value="3">3</option>
+    	<option value="4">4</option>
+    	<option value="5">5</option>
+    	</select>
+    	<input type="radio" name="bkisbn" checked="" value="{{ get_isbn }}"> {{ get_isbn }}  
+      </div>
+    	<div class="col-sm-1">
+    		<button type="submit" class="btn btn-primary mb-2" id="rvw_submit" >PUT</button>
+    	</div>
+  </form>
+  <div class="col-md-3"><h3> <span class="badge badge-primary">Users Book Ratings</span></h3></div>
+    <div class="col-md-7" style="font-size: medium;">
+      <table class="table table-condensed">
+        <th>User</th>
+        <th>Rating</th>
+        <th>Comments</th>
+      {% for result in data_get %}
+      <tr>
+      <td><label>{{ result[1] }}</label></td>
+      <td><label> {{ result[4] }}</label></td>
+      <td><label>{{ result[3] }}</label></td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+</div>
+  
+  <div class="row" style="padding:7px;">
+    <div class="col-md-3">
+    <h3><span class="badge badge-success">Good Reads Ratings</span></h3>
+    </div>
+      
+      {% block body %} 
+      <div class="col-md-4" style="font-size: medium;">
+     <table class="table table-condensed">
+     <tr>
+     <th> Ratings Count </th>
+     <th> Average Rating </th>
+     <th> Reviews Count </th>
+    </tr>
+     <tr>
+     <td>{{y[1]}} </td>
+     <td>{{y[0]}} </td>
+     <td>{{ y[2] }}</td>
+      </tr>
+      </table>
+    </div>
+    {% endblock %}
+
+  </div> 
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<p>
+{% block body %} 
+User Name : {{u_data['user_name']}} </br> Email : {{u_data['u_email']}} </br> 
+Password : {{u_data['u_password']}} 
+{% endblock %}
+</p>
+<a href="{{ url_for('registration_process')}}">
+	<button>Done</button>
+</a>
+<a href="{{ url_for('index')}}"><button>Cancel</button></a>

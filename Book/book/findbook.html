@@ -1,0 +1,38 @@
+{% extends "book/layout.html" %}
+
+{% block table %}
+<div class="container">
+<div class="row">
+  <h2 style="padding:5px"><span class="badge badge-lite">Searched Results of Books</span></h2>
+  <table class="table table-dark table-hover">
+    <thead>
+	<tr>
+  <th>ISBN</th>
+  <th>AUTHOR</th>
+  <th>YEAR</th>
+  <th>PUBLISHER</th>
+  <th>REVIEWS</th>
+  </tr>
+  </thead>
+  <tbody>
+   {% for searched_book in result %}
+    <tr>
+    <td>{{ searched_book[0]}}</td>
+    <td>{{ searched_book[1]}}</td>
+    <td>{{ searched_book[2]}}</td>
+    <td>{{ searched_book[3]}}</td>
+      <td>
+      <a href="{{ url_for('single_book', get_isbn=searched_book[0])}}"><button class="btn btn-primary">Review </button></a>
+      </td>
+	  </tr>
+    {% endfor %}
+	 
+   </tbody>
+  
+  </table>
+  </div>
+</div>
+
+
+{% endblock %}
+
